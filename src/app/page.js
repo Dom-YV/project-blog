@@ -15,8 +15,6 @@ async function Home() {
       {blogPostSlugs.map(async ({ slug, ...frontmatter }) => {
         return <BlogSummaryCard key={slug} slug={slug} {...frontmatter} />;
       })}
-
-      {/* TODO: Iterate over the data read from the file system! */}
     </div>
   );
 }
