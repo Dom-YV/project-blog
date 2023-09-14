@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./styles.css";
 import RespectMotionPreferences from "@/components/RespectMotionPreferences/RespectMotionPreferences";
+import { cookies } from "next/dist/client/components/headers";
 
 const mainFont = Work_Sans({
   subsets: ["latin"],
@@ -23,8 +24,9 @@ const monoFont = Spline_Sans_Mono({
 });
 
 function RootLayout({ children }) {
+  const savedTheme = cookies().get("color-theme");
   // TODO: Dynamic theme depending on user preference
-  const theme = "light";
+  const theme = savedTheme?.value || "light";
 
   return (
     <RespectMotionPreferences>
@@ -35,7 +37,7 @@ function RootLayout({ children }) {
         style={theme === "light" ? LIGHT_TOKENS : DARK_TOKENS}
       >
         <body>
-          <Header theme={theme} />
+          <Header initialTheme={theme} />
           <main>{children}</main>
           <Footer />
         </body>
