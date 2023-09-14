@@ -22,15 +22,7 @@ export async function getBlogPostList() {
   return blogPosts.sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
 }
 
-export const loadBlogPost = React.cache(async (slug) => {
-  const rawContent = await readFile(`/content/${slug}.mdx`);
-
-  const { data: frontmatter, content } = matter(rawContent);
-
-  return { frontmatter, content };
-});
-
-function readFile(localPath) {
+export function readFile(localPath) {
   return fs.readFile(path.join(process.cwd(), localPath), "utf8");
 }
 

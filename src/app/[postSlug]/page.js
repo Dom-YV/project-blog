@@ -3,7 +3,7 @@ import React from "react";
 import BlogHero from "@/components/BlogHero";
 
 import styles from "./postSlug.module.css";
-import { loadBlogPost } from "@/helpers/file-helpers";
+import { loadBlogPost } from "@/helpers/react-helpers";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { BLOG_TITLE } from "@/constants";
 import CodeSnippet from "@/components/CodeSnippet";
